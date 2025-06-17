@@ -1,0 +1,770 @@
+/* General Body and Container Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A more modern font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #1a1a2e, #16213e, #0f3460); /* Gradient background */
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.casino-container {
+    background-color: #2e3540; /* Darker, sophisticated background */
+    padding: 30px;
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 0 5px rgba(255, 255, 255, 0.05) inset; /* Deeper shadow with inner glow */
+    text-align: center;
+    width: 100%;
+    max-width: 800px; /* Slightly wider */
+    margin: 20px auto; /* Center with margin */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    animation: fadeIn 1s ease-out; /* Main container fade-in */
+}
+
+h1 {
+    color: #61dafb; /* Bright cyan */
+    margin-bottom: 25px;
+    font-size: 2.5em; /* Larger heading */
+    text-shadow: 0 2px 5px rgba(0, 255, 255, 0.3); /* Cyan text shadow */
+}
+
+h2 {
+    color: #ffd700; /* Gold */
+    margin-bottom: 20px;
+    font-size: 2em; /* Slightly larger H2 */
+    text-shadow: 0 1px 3px rgba(255, 215, 0, 0.3);
+}
+h3 {
+    color: red;
+    margin-bottom: 25px;
+    font-size: 2.5em; /* Larger heading */
+    text-shadow: 0 2px 5px rgba(0, 255, 255, 0.3); /* Cyan text shadow */
+}
+
+hr {
+    border: none;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1); /* Dashed separator */
+    margin: 30px 0;
+}
+
+/* Button Base Styles */
+.bet-button,
+.game-button,
+.box-button,
+.game-controls-button {
+    padding: 14px 30px; /* Larger padding */
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 0.5px; /* Slight letter spacing */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.2); /* Deeper shadow with inner highlight */
+    position: relative;
+    overflow: hidden;
+    outline: none; /* Remove default outline */
+}
+
+/* Ripple effect for all buttons */
+.bet-button:after,
+.game-button:after,
+.box-button:after,
+.game-controls-button:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4); /* Brighter ripple */
+    width: 120px; /* Larger ripple */
+    height: 120px;
+    margin-top: -60px;
+    margin-left: -60px;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smoother ripple transition */
+    pointer-events: none;
+}
+
+.bet-button:active:after,
+.game-button:active:after,
+.box-button:active:after,
+.game-controls-button:active:after {
+    transform: scale(1);
+    opacity: 1;
+    transition: 0s; /* Instant ripple on click */
+}
+
+/* Disabled Button Styles */
+.bet-button:disabled,
+.game-button:disabled,
+.box-button:disabled,
+.game-controls-button:disabled {
+    background-color: #555; /* Darker grey */
+    cursor: not-allowed;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Less prominent shadow */
+    transform: none;
+    opacity: 0.6; /* Slightly more opaque */
+    /* Disable ripple for disabled buttons */
+    pointer-events: none;
+}
+.bet-button:disabled:after,
+.game-button:disabled:after,
+.box-button:disabled:after,
+.game-controls-button:disabled:after {
+    display: none;
+}
+
+/* Input Field Styles */
+input[type="number"],
+input[type="text"],
+input[type="password"] {
+    padding: 10px 15px;
+    border: 1px solid #555; /* Subtle border */
+    border-radius: 5px;
+    background-color: #3f4752; /* Darker input background */
+    color: #e0e0e0;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #61dafb; /* Highlight border */
+    box-shadow: 0 0 0 3px rgba(97, 218, 251, 0.4), inset 0 1px 3px rgba(0, 0, 0, 0.4); /* Glow effect */
+}
+
+/* Casino Specific Styles (Roulette) */
+.casino {
+    margin-top: 20px;
+    background-color: #8b0000; /* Deeper red for roulette */
+    padding: 30px; /* More padding */
+    border-radius: 12px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9), 0 5px 15px rgba(0, 0, 0, 0.5); /* Stronger inner shadow */
+    animation: fadeIn 1s ease-out;
+    position: relative; /* For the roulette spinning effect */
+    z-index: 1; /* Ensure it's above other elements if needed */
+}
+
+.casino-balance {
+    font-size: 1.6em; /* Larger balance text */
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease-out, color 0.3s ease-out; /* Add color transition */
+}
+
+.casino-balance.pulse {
+    animation: balancePulse 0.4s ease-out;
+    color: #ffd700; /* Gold pulse color */
+}
+
+.bet-controls {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.bet-controls label {
+    font-size: 1.2em;
+    color: #e0e0e0;
+}
+
+.bet-controls input[type="number"] {
+    width: 100px; /* Wider input */
+    text-align: center;
+}
+
+.bet-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* More space between buttons */
+    margin-bottom: 25px;
+}
+
+.bet-button.red { background-color: #c0392b; } /* Darker, richer red */
+.bet-button.red:hover { background-color: #a52a22; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(192, 57, 43, 0.6); }
+.bet-button.black { background-color: #2c3e50; } /* Darker, richer black/blue-grey */
+.bet-button.black:hover { background-color: #1a242f; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(44, 62, 80, 0.6); }
+.bet-button.green { background-color: #27ae60; } /* Darker, richer green */
+.bet-button.green:hover { background-color: #1e8449; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(39, 174, 96, 0.6); }
+
+.casino-message, .game-message {
+    font-size: 1.6em; /* Larger messages */
+    margin-top: 20px;
+    font-weight: bold;
+    min-height: 1.8em; /* Ensure consistent height */
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, color 0.3s ease-out; /* Smoother and color transition */
+}
+
+.casino-message.show, .game-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.casino-message.win, .game-message.win { color: #2ecc71; text-shadow: 0 0 10px rgba(46, 204, 113, 0.7); } /* Brighter green win color with glow */
+.casino-message.lose, .game-message.lose { color: #e74c3c; text-shadow: 0 0 10px rgba(231, 76, 60, 0.7); } /* Brighter red lose color with glow */
+
+
+/* Mini-Game Styles */
+.mini-game {
+    margin-top: 30px;
+    background-color: #3f4752; /* Slightly different background for mini-games */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 1s ease-out;
+}
+
+.mini-game h2 {
+    color: #f39c12; /* Richer orange */
+    margin-bottom: 18px;
+}
+
+.mini-game p {
+    font-size: 1.1em;
+    margin-bottom: 12px;
+}
+
+.mini-game input[type="number"] {
+    width: 80px;
+    text-align: center;
+}
+
+.mini-game input[type="number"]:focus {
+    border-color: #f39c12;
+    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.4), inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.game-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.game-button {
+    background-color: #3498db; /* Brighter blue */
+}
+
+.game-button:hover {
+    background-color: #217dbb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(52, 152, 219, 0.6);
+}
+
+.box-button {
+    background-color: #9b59b6; /* Purple */
+}
+
+.box-button:hover {
+    background-color: #8e44ad;
+    box-shadow: 0 6px 18px rgba(155, 89, 182, 0.6);
+}
+
+/* Animation for the "shaking" boxes */
+.box-button.shaking {
+    animation: shake 0.3s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Animation for the Higher/Lower current number */
+#currentNumber {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #61dafb; /* Cyan for the number */
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out, color 0.2s ease-out;
+}
+
+#currentNumber.fade-out {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.9);
+}
+
+#currentNumber.fade-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    animation: pulseNumber 0.5s ease-out; /* Add a pulse to new number */
+}
+
+
+/* Game Controls (Save/Load/Reset) */
+.game-controls {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center; /* Center these buttons */
+    gap: 15px;
+    flex-wrap: wrap; /* Allow wrapping */
+}
+
+.game-controls-button { /* Base style for these */
+    background-color: #007bff;
+}
+
+.game-controls-button:hover {
+    background-color: #0056b3;
+}
+
+#resetGame {
+    background-color: #dc3545;
+}
+
+#resetGame:hover {
+    background-color: #c82333;
+}
+
+/* --- AUTHENTICATION SECTION STYLES --- */
+.auth-section {
+    background-color: #2e3540; /* Same as main container */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    margin-bottom: 30px;
+    animation: fadeIn 1s ease-out;
+    position: relative; /* For absolute positioning of forms */
+    min-height: 350px; /* Ensure space for forms to animate */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center content vertically too */
+}
+
+.auth-forms {
+    position: relative; /* To contain absolutely positioned forms */
+    width: 100%;
+    max-width: 400px; /* Max width for auth forms */
+}
+
+.auth-form {
+    background-color: #3f4752; /* Slightly lighter background for forms */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    opacity: 0;
+    position: absolute; /* Position them on top of each other */
+    top: 0;
+    left: 0;
+    width: 100%; /* Take full width of parent */
+    height: 100%; /* Take full height of parent */
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content within form */
+    align-items: center;
+}
+
+.auth-form.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+    position: static; /* Once active, take up space in the flow */
+    height: auto; /* Allow height to adjust to content */
+}
+
+.auth-form h3 {
+    color: #f39c12;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    text-shadow: 0 1px 3px rgba(243, 156, 18, 0.3);
+}
+
+.auth-form input {
+    width: calc(100% - 30px); /* Adjust for padding */
+    max-width: 300px; /* Max width for inputs */
+    margin-bottom: 18px;
+}
+
+.auth-form .game-button {
+    margin-top: 15px;
+    max-width: 200px; /* Max width for auth buttons */
+}
+
+.auth-form p {
+    margin-top: 20px;
+    font-size: 1em;
+}
+
+.auth-form a {
+    color: #61dafb;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.auth-form a:hover {
+    color: #00bcd4;
+    text-decoration: underline;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+.login-message, .register-message {
+    min-height: 1.5em; /* Ensure consistent height */
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* User Info Section */
+.user-info {
+    background-color: #3f4752;
+    padding: 15px 20px; /* More horizontal padding */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+    animation: fadeIn 0.8s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-info p {
+    margin: 0;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.user-info span {
+    color: #61dafb;
+    text-shadow: 0 0 5px rgba(97, 218, 251, 0.5); /* Glow for username */
+}
+
+#logoutButton {
+    background-color: #f39c12; /* Orange for logout */
+    color: #2e3540; /* Dark text for contrast */
+    box-shadow: 0 4px 10px rgba(243, 156, 18, 0.5);
+}
+
+#logoutButton:hover {
+    background-color: #e67e22;
+    box-shadow: 0 6px 15px rgba(243, 156, 18, 0.7);
+}
+
+
+/* --- LEADERBOARD SECTION STYLES --- */
+.leaderboard-section {
+    margin-top: 40px; /* More space */
+    background-color: #3f4752;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 1s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.leaderboard-section h2 {
+    color: #f39c12;
+    margin-bottom: 20px;
+}
+
+.leaderboard-list {
+    background-color: #2e3540; /* Darker background for list */
+    padding: 15px;
+    border-radius: 8px;
+    max-height: 350px; /* Slightly taller */
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+}
+
+/* Scrollbar Styling for Webkit (Chrome, Safari) */
+.leaderboard-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.leaderboard-list::-webkit-scrollbar-track {
+    background: #2e3540;
+    border-radius: 10px;
+}
+
+.leaderboard-list::-webkit-scrollbar-thumb {
+    background-color: #61dafb;
+    border-radius: 10px;
+    border: 3px solid #2e3540; /* Thicker border */
+}
+
+.leaderboard-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically align items */
+    padding: 10px 15px; /* More padding */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Lighter border */
+    font-size: 1.1em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.leaderboard-item:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-item:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.05); /* Very subtle alternating row */
+}
+
+.leaderboard-item:hover {
+    background-color: rgba(97, 218, 251, 0.08); /* Subtle hover glow */
+    transform: translateX(3px); /* Slight slide effect */
+}
+
+.leaderboard-item .rank {
+    font-weight: bold;
+    color: #ffd700;
+    width: 40px; /* Wider rank column */
+    text-align: left;
+    font-size: 1.1em;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* Subtle glow */
+}
+
+.leaderboard-item .username {
+    flex-grow: 1;
+    text-align: left;
+    padding: 0 15px;
+    color: #e0e0e0;
+    white-space: nowrap; /* Prevent username wrap */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for long names */
+}
+
+.leaderboard-item .balance {
+    font-weight: bold;
+    color: #2ecc71; /* Green balance */
+    text-align: right;
+    width: 120px; /* Fixed width for balance */
+    font-size: 1.1em;
+    text-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
+}
+
+/* Specific styling for top 3 */
+.leaderboard-item:nth-child(2) { /* Nth-child is 1-indexed, so 2nd is first actual player */
+    background: linear-gradient(to right, rgba(255, 215, 0, 0.1), transparent);
+    border-left: 3px solid #ffd700; /* Gold border */
+}
+.leaderboard-item:nth-child(2) .rank,
+.leaderboard-item:nth-child(2) .username,
+.leaderboard-item:nth-child(2) .balance {
+    color: #ffd700; /* Gold for first place */
+    font-size: 1.3em;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.leaderboard-item:nth-child(3) {
+    background: linear-gradient(to right, rgba(192, 192, 192, 0.1), transparent);
+    border-left: 3px solid #c0c0c0; /* Silver border */
+}
+.leaderboard-item:nth-child(3) .rank,
+.leaderboard-item:nth-child(3) .username,
+.leaderboard-item:nth-child(3) .balance {
+    color: #c0c0c0; /* Silver for second place */
+    font-size: 1.2em;
+    text-shadow: 0 0 8px rgba(192, 192, 192, 0.6);
+}
+
+.leaderboard-item:nth-child(4) {
+    background: linear-gradient(to right, rgba(205, 127, 50, 0.1), transparent);
+    border-left: 3px solid #cd7f32; /* Bronze border */
+}
+.leaderboard-item:nth-child(4) .rank,
+.leaderboard-item:nth-child(4) .username,
+.leaderboard-item:nth-child(4) .balance {
+    color: #cd7f32; /* Bronze for third place */
+    font-size: 1.15em;
+    text-shadow: 0 0 7px rgba(205, 127, 50, 0.6);
+}
+
+
+/* --- KEYFRAME ANIMATIONS --- */
+
+/* Fade In for sections */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Pulse for balance change */
+@keyframes balancePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.06); } /* More pronounced pulse */
+    100% { transform: scale(1); }
+}
+
+/* Shake effect for boxes */
+@keyframes shake {
+    10%, 90% { transform: translate3d(-2px, 0, 0); } /* Stronger shake */
+    20%, 80% { transform: translate3d(4px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-8px, 0, 0); }
+    40%, 60% { transform: translate3d(8px, 0, 0); }
+}
+
+/* Roulette spin effect (visual only) */
+.casino.spinning::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px; /* Larger visual wheel */
+    height: 200px;
+    background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 70%, transparent 100%); /* Radial gradient for depth */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 1s linear infinite;
+    z-index: 10; /* Ensure it's on top */
+    border: 8px solid rgba(255, 255, 255, 0.1); /* Thicker border */
+    box-sizing: border-box;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5); /* Glowing effect */
+}
+
+@keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Flash effect for win/lose messages */
+@keyframes flashWin {
+    0%, 100% { background-color: transparent; }
+    50% { background-color: rgba(46, 204, 113, 0.3); } /* Brighter green */
+}
+
+@keyframes flashLose {
+    0%, 100% { background-color: transparent; }
+    50% { background-color: rgba(231, 76, 60, 0.3); } /* Brighter red */
+}
+
+/* Pulse for Higher/Lower number */
+@keyframes pulseNumber {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* --- RESPONSIVE DESIGN --- */
+
+@media (max-width: 768px) {
+    .casino-container {
+        padding: 20px;
+        margin: 10px auto;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.7em;
+    }
+
+    .bet-options, .game-options, .game-controls {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px;
+    }
+
+    .bet-button, .game-button, .box-button, .game-controls-button {
+        width: 100%; /* Full width buttons */
+        max-width: 300px; /* Limit max width for stacked buttons */
+        margin: 0 auto; /* Center them */
+        padding: 12px 20px;
+    }
+
+    .bet-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .auth-form {
+        position: static; /* Override absolute positioning for small screens */
+        transform: none; /* Remove transform */
+        height: auto; /* Allow natural height */
+        padding: 20px;
+        margin-bottom: 20px; /* Space between forms if both active */
+    }
+
+    .auth-forms {
+        flex-direction: column;
+        align-items: center;
+        gap: 0; /* Remove gap if stacking */
+        min-height: auto; /* Reset min-height */
+    }
+
+    .user-info {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .leaderboard-item {
+        flex-wrap: wrap; /* Allow wrapping for player items */
+        padding: 8px 10px;
+    }
+
+    .leaderboard-item .username {
+        flex-basis: 100%; /* Username takes full width */
+        padding-left: 0;
+        text-align: center;
+        order: 3; /* Move username to third line */
+        margin-top: 5px;
+    }
+
+    .leaderboard-item .rank,
+    .leaderboard-item .balance {
+        flex: 1; /* Distribute space */
+        text-align: center;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .casino-container {
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    .bet-controls input[type="number"],
+    .mini-game input[type="number"] {
+        width: 70px;
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    .casino-message, .game-message {
+        font-size: 1.3em;
+        min-height: 1.6em;
+    }
+
+    .user-info p {
+        font-size: 1em;
+    }
+
+    .leaderboard-item .rank,
+    .leaderboard-item .balance {
+        font-size: 0.9em;
+    }
+}

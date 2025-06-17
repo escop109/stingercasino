@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stinger Casino - Roulette & Mini-Games with Animations!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="casino-container">
+        <h1>Stinger Casino - Roulette & Mini-Games</h1>
+        <h3>With love group stinger`s team</h3>
+
+        <div class="auth-section" id="authSection">
+            <h2>Welcome!</h2>
+            <div class="auth-forms">
+                <div id="loginForm" class="auth-form active">
+                    <h3>Login</h3>
+                    <input type="text" id="loginUsername" placeholder="Username" required>
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <button id="loginButton" class="game-button">Login</button>
+                    <p>Don't have an account? <a href="#" id="showRegister">Register here</a></p>
+                    <p id="loginMessage" class="game-message"></p>
+                </div>
+
+                <div id="registerForm" class="auth-form">
+                    <h3>Register</h3>
+                    <input type="text" id="registerUsername" placeholder="Username" required>
+                    <input type="password" id="registerPassword" placeholder="Password" required>
+                    <button id="registerButton" class="game-button">Register</button>
+                    <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
+                    <p id="registerMessage" class="game-message"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="user-info" id="userInfo" style="display: none;">
+            <p>Logged in as: <span id="currentUsername"></span></p>
+            <button id="logoutButton" class="game-controls-button">Logout</button>
+            <hr> </div>
+
+        <div id="gameContent" style="display: none;">
+            <div class="casino">
+                <h2>Place Your Roulette Bet!</h2>
+                <p class="casino-balance">Your Balance: <span id="casinoBalance">1000</span></p>
+
+                <div class="bet-controls">
+                    <label for="betAmount">Bet Amount:</label>
+                    <input type="number" id="betAmount" value="100" min="1">
+                </div>
+
+                <div class="bet-options">
+                    <button class="bet-button red" data-color="red">Bet Red (2x)</button>
+                    <button class="bet-button black" data-color="black">Bet Black (2x)</button>
+                    <button class="bet-button green" data-color="green">Bet Green (14x)</button>
+                </div>
+                <p id="casinoResult" class="casino-message"></p>
+            </div>
+
+            <hr>
+
+            <div class="mini-game">
+                <h2>Coin Flip</h2>
+                <p>Bet: <input type="number" id="coinFlipBet" value="50" min="1"></p>
+                <div class="game-options">
+                    <button id="flipHeads" class="game-button">Heads</button>
+                    <button id="flipTails" class="game-button">Tails</button>
+                </div>
+                <p id="coinFlipResult" class="game-message"></p>
+            </div>
+
+            <hr>
+
+            <div class="mini-game">
+                <h2>Choose the Box</h2>
+                <p>Cost to Play: <span id="boxGameCost">100</span></p>
+                <div class="game-options">
+                    <button id="box1" class="box-button">Box 1</button>
+                    <button id="box2" class="box-button">Box 2</button>
+                    <button id="box3" class="box-button">Box 3</button>
+                </div>
+                <p id="boxGameResult" class="game-message"></p>
+            </div>
+
+            <hr>
+
+            <div class="mini-game">
+                <h2>Higher/Lower</h2>
+                <p>Bet: <input type="number" id="higherLowerBet" value="75" min="1"></p>
+                <p>Current Number: <span id="currentNumber">?</span></p>
+                <div class="game-options">
+                    <button id="guessHigher" class="game-button">Higher</button>
+                    <button id="guessLower" class="game-button">Lower</button>
+                </div>
+                <p id="higherLowerResult" class="game-message"></p>
+            </div>
+
+            <hr>
+
+            <div class="game-controls">
+                <button id="saveGame" class="game-controls-button">Save Game</button>
+                <button id="loadGame" class="game-controls-button">Load Game</button>
+                <button id="resetGame" class="game-controls-button">Reset Game</button>
+            </div>
+        </div> <hr>
+
+        <div class="leaderboard-section">
+            <h2>Top Players</h2>
+            <div class="leaderboard-list" id="leaderboardList">
+                <p>Loading leaderboard...</p>
+                </div>
+        </div>
+
+    </div> <script src="script.js"></script>
+</body>
+</html>
