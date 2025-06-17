@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ И СОСТОЯНИЯ ---
     let currentUser = null; // Текущий залогиненный пользователь
-    let users = {}; // Объект для хранения всех пользователей: {username: {password: 'hashed', balance: 1000}, ...}
-    const INITIAL_BALANCE = 1000;
+    let users = {}; // Объект для хранения всех пользователей: {username: {password: 'hashed', balance: 999999999}, ...}
+    const INITIAL_BALANCE = 999999999;
 
     // --- DOM ЭЛЕМЕНТЫ ---
     const casinoBalanceDisplay = document.getElementById('casinoBalance');
